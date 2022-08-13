@@ -148,6 +148,5 @@ parts:
     source-type: git
     organize:
       '*': usr/local/share/
-      '.tms_config_master': usr/local/share/.tms_config_master
     prime:
       - -TuxMathScrabble-0.8.0.png
