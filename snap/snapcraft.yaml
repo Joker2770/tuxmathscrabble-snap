@@ -61,7 +61,7 @@ layout:
 apps:
   tuxmathscrabble:
     command-chain: ["snap/command-chain/alsa-launch"]
-    command: python3 $SNAP/tuxmathscrabble.py
+    command: "cd $SNAP && python3 $SNAP/tuxmathscrabble.py"
     environment:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
     extensions: [gnome-3-28]
