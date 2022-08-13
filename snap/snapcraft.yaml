@@ -26,6 +26,11 @@ description: |
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 base: core18
+architectures:
+  - build-on: amd64
+  - build-on: i386
+  - build-on: armhf
+  - build-on: arm64
 
 plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   gtk-3-themes:
@@ -56,7 +61,7 @@ layout:
 apps:
   tuxmathscrabble:
     command-chain: ["snap/command-chain/alsa-launch"]
-    command: python3 usr/local/bin/tuxmathscrabble.py
+    command: python3 tuxmathscrabble.py
     environment:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
     extensions: [gnome-3-28]
@@ -118,22 +123,5 @@ parts:
     plugin: dump
     source: "https://github.com/Joker2770/tuxmathscrabble-snap/raw/main/TMS-Python3.tar.gz"
     source-type: tar
-    organize:
-      "*" : usr/local/bin/
     prime:
       - -TuxMathScrabble-0.8.0.png
-
-  include-sh:
-    after: [include-code]
-    plugin: dump
-    source: "https://github.com/Joker2770/tuxmathscrabble-snap.git"
-    source-depth: 1
-    source-branch: main
-    source-type: git
-    organize:
-      "launcher.sh" : usr/local/bin/
-    prime:
-      - -README*
-      - -LICENSE
-      - -TMS-Python3.tar*
-      - -snap
