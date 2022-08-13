@@ -66,15 +66,18 @@ apps:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
     extensions: [gnome-3-28]
     plugs:
+      - home
       - desktop
       - desktop-legacy
       - gsettings
       - wayland
       - unity7
       - x11
+      - opengl
       - audio-playback
       - pulseaudio
       - alsa
+      - removable-media
     
 parts:
   alsa-mixin:
