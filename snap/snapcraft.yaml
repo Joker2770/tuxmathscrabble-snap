@@ -127,6 +127,7 @@ parts:
       - -TuxMathScrabble-0.8.0.png
 
   include-launcher:
+    after: [include-code]
     plugin: dump
     source: "https://github.com/Joker2770/tuxmathscrabble-snap.git"
     source-depth: 1
@@ -135,6 +136,7 @@ parts:
     organize:
       launcher.sh: bin/
     prime:
+      - -TMS-Python3.tar*
       - -README*
       - -LICENSE
       - -snap
