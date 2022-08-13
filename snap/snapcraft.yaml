@@ -116,7 +116,7 @@ parts:
   include-code:
     after: [env]
     plugin: dump
-    source: "https://github.com/Joker2770/raw/main/TMS-Python3.tar.gz"
+    source: "https://github.com/Joker2770/tuxmathscrabble-snap/raw/main/TMS-Python3.tar.gz"
     source-type: tar
     organize:
       "*" : usr/local/bin/
