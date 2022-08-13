@@ -118,6 +118,8 @@ parts:
     plugin: dump
     source: "https://github.com/Joker2770/raw/main/TMS-Python3.tar.gz"
     source-type: tar
+    organize:
+      "*" : usr/local/bin/
     prime:
       - -TuxMathScrabble-0.8.0.png
 
