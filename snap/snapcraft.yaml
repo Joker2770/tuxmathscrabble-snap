@@ -61,7 +61,7 @@ layout:
 apps:
   tuxmathscrabble:
     command-chain: ["snap/command-chain/alsa-launch"]
-    command: cd $SNAP && python3 $SNAP/tuxmathscrabble.py
+    command: bin/launcher.sh
     environment:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
     extensions: [gnome-3-28]
@@ -125,3 +125,16 @@ parts:
     source-type: tar
     prime:
       - -TuxMathScrabble-0.8.0.png
+
+  include-launcher:
+    plugin: dump
+    source: "https://github.com/Joker2770/tuxmathscrabble-snap.git"
+    source-depth: 1
+    source-branch: main
+    source-type: git
+    organize:
+      launcher.sh: bin/
+    prime:
+      - -README*
+      - -LICENSE
+      - -snap
