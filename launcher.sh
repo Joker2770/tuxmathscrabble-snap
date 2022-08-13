@@ -21,5 +21,5 @@
 # ***************************************************************************/
 #!/bin/bash
 
-cd $SNAP
+cd $SNAP/usr/local/share/
 python3 tuxmathscrabble.py
