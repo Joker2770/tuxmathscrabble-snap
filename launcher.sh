@@ -21,5 +21,6 @@
 # ***************************************************************************/
 #!/bin/bash
 
-cd $SNAP/usr/local/share/
+SCRIPT_DIR=$( cd ${0%/*} && pwd -P )
+cd "$SCRIPT_DIR"
 python3 tuxmathscrabble.py

@@ -61,7 +61,7 @@ layout:
 apps:
   tuxmathscrabble:
     command-chain: ["snap/command-chain/alsa-launch"]
-    command: bin/launcher.sh
+    command: usr/local/share/launcher.sh
     environment:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
     extensions: [gnome-3-28]
@@ -126,7 +126,7 @@ parts:
     source-branch: main
     source-type: git
     organize:
-      launcher.sh: bin/
+      launcher.sh: usr/local/share/
     prime:
       - -TMS-Python3.tar*
       - -README*
