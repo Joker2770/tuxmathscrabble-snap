@@ -117,19 +117,9 @@ parts:
       - libportmidi-dev
       - libjpeg8-dev
       - python3-setuptools
-        
-  include-code:
-    after: [env]
-    plugin: dump
-    source: "https://github.com/Joker2770/tuxmathscrabble-snap/raw/main/TMS-Python3.tar.gz"
-    source-type: tar
-    organize:
-      '*': usr/local/share/
-    prime:
-      - -TuxMathScrabble-0.8.0.png
 
   include-launcher:
-    after: [include-code]
+    after: [env]
     plugin: dump
     source: "https://github.com/Joker2770/tuxmathscrabble-snap.git"
     source-depth: 1
@@ -142,3 +132,16 @@ parts:
       - -README*
       - -LICENSE
       - -snap
+    override-build: |
+      snapcraftctl build
+      chmod +x launcher.sh
+
+  include-code:
+    after: [include-launcher]
+    plugin: dump
+    source: "https://github.com/Joker2770/tuxmathscrabble-snap/raw/main/TMS-Python3.tar.gz"
+    source-type: tar
+    organize:
+      '*': usr/local/share/
+    prime:
+      - -TuxMathScrabble-0.8.0.png
