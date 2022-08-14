@@ -148,7 +148,3 @@ parts:
       '*': usr/share/games/
     prime:
       - -TuxMathScrabble*
-    override-build: |
-      snapcraftctl build
-      mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/share/games/
-      cp .tms_config_master ${SNAPCRAFT_PART_INSTALL}/usr/share/games/
