@@ -142,11 +142,16 @@ parts:
   include-code:
     after: [include-launcher]
     plugin: dump
-    source: "https://git.code.sf.net/p/tuxmathscrabble/code"
-    source-depth: 1
-    source-branch: master
-    source-type: git
+    source: "https://github.com/Joker2770/tuxmathscrabble-snap/raw/main/TMS-Python3.tar.gz"
+    source-type: tar
     organize:
-      '*': usr/local/share/
+      'Font': usr/local/share/
+      'TuxMathScrabble': usr/local/share/
+      '.tms_config_master': usr/local/share/
+      'LICENSE': usr/local/share/
+      'setup.py': usr/local/share/
+      'tms.ico': usr/local/share/
+      'tuxmathscrabble.py': usr/local/share/
+      'VERSION': usr/local/share/
     prime:
       - -TuxMathScrabble-0.8.0.png
