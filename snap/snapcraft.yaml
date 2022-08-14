@@ -78,25 +78,6 @@ apps:
       - pulseaudio
       - alsa
       - removable-media
-  tuxmathscrabble-admin:
-    command-chain: ["snap/command-chain/alsa-launch"]
-    command: usr/share/games/launcher-admin.sh
-    environment:
-      LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
-    extensions: [gnome-3-28]
-    plugs:
-      - home
-      - desktop
-      - desktop-legacy
-      - gsettings
-      - wayland
-      - unity7
-      - x11
-      - opengl
-      - audio-playback
-      - pulseaudio
-      - alsa
-      - removable-media
     
 parts:
   alsa-mixin:
@@ -116,12 +97,6 @@ parts:
     python-version: python3
     python-packages:
       - pygame
-      - wxpython
-      - attrdict
-      - pillow
-      - six
-      - numpy
-      - cython
     stage-packages:
       - freepats
       - libmodplug1
@@ -155,7 +130,6 @@ parts:
     source-type: git
     organize:
       launcher.sh: usr/share/games/
-      launcher-admin.sh: usr/share/games/
     prime:
       - -TMS-Python3.tar*
       - -README*
@@ -164,7 +138,6 @@ parts:
     override-build: |
       snapcraftctl build
       chmod +x launcher.sh
-      chmod +x launcher-admin.sh
 
   include-code:
     after: [include-launcher]
