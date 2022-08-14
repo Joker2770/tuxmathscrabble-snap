@@ -117,6 +117,11 @@ parts:
     python-packages:
       - pygame
       - wxpython
+      - attrdict
+      - pillow
+      - six
+      - numpy
+      - cython
     stage-packages:
       - freepats
       - libmodplug1
@@ -150,6 +155,7 @@ parts:
     source-type: git
     organize:
       launcher.sh: usr/share/games/
+      launcher-admin.sh: usr/share/games/
     prime:
       - -TMS-Python3.tar*
       - -README*
@@ -159,8 +165,6 @@ parts:
       snapcraftctl build
       chmod +x launcher.sh
       chmod +x launcher-admin.sh
-      mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/share/games/
-      cp .tms_config_master ${SNAPCRAFT_PART_INSTALL}/usr/share/games/
 
   include-code:
     after: [include-launcher]
@@ -170,4 +174,8 @@ parts:
     organize:
       '*': usr/share/games/
     prime:
-      - -TuxMathScrabble-0.8.0.png
+      - -TuxMathScrabble*
+    override-build: |
+      snapcraftctl build
+      mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/share/games/
+      cp .tms_config_master ${SNAPCRAFT_PART_INSTALL}/usr/share/games/
