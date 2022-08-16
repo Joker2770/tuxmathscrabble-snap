@@ -50,7 +50,6 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   
 apps:
   tuxmathscrabble:
-    command-chain: ["snap/command-chain/alsa-launch"]
     command: usr/share/games/launcher.sh
     extensions: [gnome-3-28]
     plugs:
