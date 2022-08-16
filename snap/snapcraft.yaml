@@ -23,6 +23,8 @@ description: |
   Online/touch-screen version: http://ccosse.github.io/TuxMathScrabble-2015/
   Encourages kids to construct compound equations and consider multiple abstract possibilities.
 
+  _more build details: https://github.com/Joker2770/tuxmathscrabble-snap_
+
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 base: core18
@@ -45,25 +47,11 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
     interface: content
     target: $SNAP/data-dir/sounds
     default-provider: gtk-common-themes:sounds-themes
-
-layout:
-  /usr/share/midi/freepats:
-    bind: $SNAP/usr/share/midi/freepats
-  /etc/fonts:
-    bind: $SNAP/etc/fonts
-  /etc/timidity:
-    bind: $SNAP/etc/timidity
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
-  /usr/share/alsa:
-    bind: $SNAP/usr/share/alsa
   
 apps:
   tuxmathscrabble:
     command-chain: ["snap/command-chain/alsa-launch"]
     command: usr/share/games/launcher.sh
-    environment:
-      LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
     extensions: [gnome-3-28]
     plugs:
       - home
@@ -75,24 +63,10 @@ apps:
       - x11
       - opengl
       - audio-playback
-      - pulseaudio
-      - alsa
       - removable-media
     
 parts:
-  alsa-mixin:
-    plugin: dump
-    source: https://github.com/diddlesnaps/snapcraft-alsa.git
-    source-subdir: snapcraft-assets
-    build-packages:
-      - libasound2-dev
-    stage-packages:
-      - libasound2
-      - libasound2-plugins
-      - yad
-
   env:
-    after: [alsa-mixin]
     plugin: python
     python-version: python3
     python-packages:
